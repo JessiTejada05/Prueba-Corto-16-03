@@ -1,39 +1,29 @@
 #include <iostream>
 
-void insertionSort(int arr[], int n) {
-    for (int i = 1; i < n; ++i) {
-        int key = arr[i];
-        int j = i - 1;
-
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            --j;
-        }
-        arr[j + 1] = key;
-    }
-}
 using namespace std;
 int main() {
-    const int max = 100;
-    int numero[max];
-    int num, count = 0;
 
-    cout << "Ingrese los numeros enteros, escriba -1 para finalizar:\n";
+    int numero[] = {10, 20, 30, 40, 50};
+    int tamano = sizeof(numero) / sizeof(numero[0]);
 
-    while (true) {
-        cin >> num;
-        if (num == -1 || count >= max)
+
+    int obj;
+    cout << "Ingrese un numero para buscar en el vector: ";
+    cin >> obj;
+
+    int posicion = -1;
+    for (int i = 0; i < tamano; ++i) {
+        if (numero[i] == obj) {
+            posicion = i;
             break;
-        numero[count++] = num;
+        }
     }
 
-    insertionSort(numero, count);
-
-    cout << "\nNumeros ordenados de menor a mayor:\n";
-    for (int i = 0; i < count; ++i) {
-        cout << numero[i] << " ";
+    if (posicion != -1) {
+        cout << "El numero " << obj << " esta presente en el vector en la posicion " << posicion << ".\n";
+    } else {
+        cout << "El numero " << obj << " no esta presente en el vector.\n";
     }
-    cout << endl;
 
     return 0;
 }
